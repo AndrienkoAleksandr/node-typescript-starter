@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && webpack-cli --config webpack.config.js --mode production && mkdir -p dist/ && cp src/client/index.html dist/index.html",
     "dev": "tsc --watch & nodemon dist",
     "test": "tsc && mocha dist/**/*.spec.js",
     "lint": "eslint src --ext ts",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,8 @@
   "dependencies": {
     "@types/node": "7.0.22",
     "express": "4.15.3",
-    "nodemon": "1.11.0"
+    "nodemon": "1.11.0",
+    "axios": "0.18.0"
   },
   "devDependencies": {
     "@types/mocha": "2.2.41",
@@ -26,9 +28,14 @@
     "eslint-plugin-import": "2.3.0",
     "eslint-plugin-promise": "3.5.0",
     "mocha": "3.4.2",
+    "rimraf": "2.6.2",
     "supertest": "3.0.0",
+    "ts-loader": "4.1.0",
     "tsc": "1.20150623.0",
-    "typescript": "2.3.3",
-    "typescript-eslint-parser": "3.0.0"
+    "typescript": "2.7.2",
+    "typescript-eslint-parser": "3.0.0",
+    "webpack": "4.1.1",
+    "webpack-cli": "2.0.12",
+    "webpack-node-externals": "^1.7.2"
   }
 }
